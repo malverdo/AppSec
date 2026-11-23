@@ -1,0 +1,11 @@
+services:
+  app:
+    build: .
+    container_name: appsec_runner
+    tty: true               # Включаем псевдотерминал для интерактивного ввода (input())
+    stdin_open: true        # Оставляем стандартный поток ввода открытым
+    command: tail -f /dev/null # Удерживаем контейнер запущенным без выполнения скрипта
+    env_file:
+      - .env
+    volumes:
+      - .:/app              # Любые изменения в папке AppSec сразу видны в контейнере

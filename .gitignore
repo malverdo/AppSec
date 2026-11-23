@@ -1,0 +1,14 @@
+# Секреты и окружение
+.env
+.venv/
+venv/
+
+# Кэш Python
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Системные файлы и IDE
+.DS_Store
+.vscode/
+.idea/

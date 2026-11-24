@@ -119,5 +119,5 @@ def validate_password(password: str):
 
     return True
 
-# Call the function to run it
-validate_password('heD2&llasdasdasd')
+validate_password('heD2&llasdasdasd') # true
+# validate_password('hellasdasdasd') # Exception

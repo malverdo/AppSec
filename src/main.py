@@ -1,3 +1,6 @@
+import re
+
+
 print('hello world');
 print('you HERE');
 
@@ -58,7 +61,6 @@ class Solution:
             else:
                 result += currentLetter
 
-            print(result, currentLetter, oldLetter)
 
             oldLetter = currentLetter
 
@@ -70,3 +72,52 @@ processor = Solution()
 
 # print(processor.romanToInt('MMMDCCCXLIX'))  # Выведет: 3849
 print(processor.romanToInt('MCMXCIV'))      # Выведет: 1994
+
+
+
+password_chars = [
+    {
+        'A': 65, 'B': 66, 'C': 67, 'D': 68, 'E': 69, 'F': 70, 'G': 71, 'H': 72,
+        'I': 73, 'J': 74, 'K': 75, 'L': 76, 'M': 77, 'N': 78, 'O': 79, 'P': 80,
+        'Q': 81, 'R': 82, 'S': 83, 'T': 84, 'U': 85, 'V': 86, 'W': 87, 'X': 88,
+        'Y': 89, 'Z': 90
+    },
+    {
+        'a': 97, 'b': 98, 'c': 99, 'd': 100, 'e': 101, 'f': 102, 'g': 103, 'h': 104,
+        'i': 105, 'j': 106, 'k': 107, 'l': 108, 'm': 109, 'n': 110, 'o': 111, 'p': 112,
+        'q': 113, 'r': 114, 's': 115, 't': 116, 'u': 117, 'v': 118, 'w': 119, 'x': 120,
+        'y': 121, 'z': 122
+    },
+    {
+        '0': 48, '1': 49, '2': 50, '3': 51, '4': 52,
+        '5': 53, '6': 54, '7': 55, '8': 56, '9': 57
+    },
+    {
+        '!': 33, '@': 64, '#': 35, '$': 36,
+        '%': 37, '^': 94, '&': 38, '*': 42
+    }
+]
+
+def validate_password(password: str):
+
+    errors = [];
+
+    password.replace(" ", "")
+    if len(password) < 8:
+        errors.append("Длина пароля не менее 8 символов")
+    if not re.search(r"[A-Z]", password):
+        errors.append("Нужна хотя бы одна заглавная буква")
+    if not re.search(r"[a-z]", password):
+        errors.append("Нужна хотя бы одна строчная буква")
+    if not re.search(r"\d", password):
+        errors.append("Нужна хотя бы одна цифра")
+    if not re.search(r"[!@#$%^&*]", password):
+        errors.append("Нужен хотя бы один спецсимвол")
+
+    if errors:
+        raise ValueError(errors)
+
+    return True
+
+# Call the function to run it
+validate_password('heD2&llasdasdasd')

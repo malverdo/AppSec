@@ -98,28 +98,3 @@ password_chars = [
     }
 ]
 
-def validate_password(password: str):
-
-    errors = [];
-
-    print(c.isupper() for c in password)
-
-    password = password.replace(" ", "")
-    if len(password) < 8:
-        errors.append("Длина пароля не менее 8 символов")
-    if not any(c.isupper() for c in password):
-        errors.append("Нужна хотя бы одна заглавная буква")
-    if not any(c.islower() for c in password):
-        errors.append("Нужна хотя бы одна строчная буква")
-    if not any(c.isdigit() for c in password):
-        errors.append("Нужна хотя бы одна цифра")
-    if not any(c in "!@#$%^&*" for c in password):
-        errors.append("Нужен хотя бы один спецсимвол")
-
-    if errors:
-        raise ValueError(errors)
-
-    return True
-
-validate_password('heD2&llasdasdasd') # true
-# validate_password('hellasdasdasd') # Exception
